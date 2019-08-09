@@ -9,6 +9,7 @@ const app = () => {
 
   // Time display
   const timeDisplay = document.querySelector(".time-display");
+  const timeSelect = document.querySelectorAll(".time-select button");
 
   // Get the length of the outline
   const outlineLength = outline.getTotalLength();
@@ -23,6 +24,16 @@ const app = () => {
   // Play sounds
   play.addEventListener("click", () => {
     checkPlay(song);
+  });
+
+  // Select sound duration
+  timeSelect.forEach(option => {
+    option.addEventListener("click", function() {
+      fakeDuration = this.getAttribute("data-time");
+      timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
+        fakeDuration % 60
+      )}`;
+    });
   });
 
   // Function to stop and play sounds and change icons.
@@ -51,6 +62,13 @@ const app = () => {
 
     // Text animation (Countdown)
     timeDisplay.textContent = `${minutes}:${seconds}`;
+
+    if (currentTime >= fakeDuration) {
+      song.pause();
+      song.currentTime = 0;
+      play.src = "./svg/play.svg";
+      video.pause();
+    }
   };
 };
 
