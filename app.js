@@ -48,6 +48,9 @@ const app = () => {
     // Progress Bar animation
     let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
     outline.style.strokeDashoffset = progress;
+
+    // Text animation (Countdown)
+    timeDisplay.textContent = `${minutes}:${seconds}`;
   };
 };
 
