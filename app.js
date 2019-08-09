@@ -6,6 +6,11 @@ const app = () => {
 
   // Sounds
   const sounds = document.querySelectorAll(".sound-picker button");
+
+  // Time display
+  const timeDisplay = document.querySelector(".time-display");
+
+  // Get the length of the outline
 };
 
 app();
